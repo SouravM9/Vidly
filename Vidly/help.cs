@@ -31,5 +31,29 @@ namespace Vidly
         // 5. go to Bootstrap (https://getbootstrap.com/docs/5.0/getting-started/introduction/) and copy the Bundle
         // 6. Replace this line so that we are now using the latest version of bootstrap
         //   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        /* Working with Data
+          1
+         *Please do two things first then run enable-migrations:
+
+            Add ApplicationDbContext.cs in your Models folder from mosh asp net mvc 5 project.
+            In Nuget package manager console, run command: install-package Entityframework.
+
+        add-migration InitialModel
+
+        update-database
+
+         2
+        To add new tables
+         - Create models
+
+        To add relation between table
+            -check the MembershipType & Customer models (one-to-many)
+
+        3
+        Seeding the database
+            -add-migration PopulateMembershipType
+            
+         */
     }
 }
