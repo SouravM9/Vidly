@@ -53,6 +53,10 @@ namespace Vidly
         3
         Seeding the database
             -add-migration PopulateMembershipType
+
+        4
+        Populating Records from DB
+            
             
          */
     }

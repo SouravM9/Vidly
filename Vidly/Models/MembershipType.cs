@@ -1,4 +1,6 @@
-﻿namespace Vidly.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Vidly.Models
 {
     public class MembershipType
     {
@@ -9,5 +11,8 @@
         public byte DurationInMonths { get; set; }
 
         public byte DiscountRate { get; set; }
+
+        [Required]
+        public string Name { get; set; }
     }
 }
