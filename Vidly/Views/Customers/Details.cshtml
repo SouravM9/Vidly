@@ -6,11 +6,15 @@
 }
 
 <h2>@Model.Name</h2>
+<hr />
 
 <ul>
     <li>Membership Type: @Model.MembershipType.Name</li>
     @if(Model.BirthDate.HasValue)
     {
-        <li>Birthdate: @Model.BirthDate.Value.ToShortDateString()</li>
+        <li>Birthdate: @Model.BirthDate.Value.ToLongDateString()</li>
     }
 </ul>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

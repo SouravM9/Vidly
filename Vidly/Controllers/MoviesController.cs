@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
+using System.Data.Entity;  // For Include function
 
 namespace Vidly.Controllers
 {
@@ -48,6 +49,17 @@ namespace Vidly.Controllers
         //    return Content(year + " " + month);
         //}
 
+        private ApplicationDbContext _context;
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
         public IActionResult Index()
         {
             var movies = GetMovies();
@@ -56,13 +68,21 @@ namespace Vidly.Controllers
 
         private IEnumerable<Movie> GetMovies()
         {
-            return new List<Movie>
-            {
-                new Movie{ Id=1, Name="Vikram Vedha"},
-                new Movie{ Id=2, Name="RRR"}
-            };
+            return _context.Movies.Include(c => c.Genre).ToList();
+            
         }
 
+        public IActionResult Details(int Id)
+        {
+            var movies = GetMovies();
+
+            foreach (var movie in movies)
+            {
+                if (movie.Id == Id)
+                    return View(movie);
+            }
+            return NotFound();
+        }
         
     }
 }
